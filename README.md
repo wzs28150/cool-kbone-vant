@@ -66,6 +66,8 @@ npm run build:mp
 │  └─ main.js                // Web 端入口文件
 └─ index.html                // Web 端入口模板
 
+## 日志
+
 >2020.02.27
 1. 首页增加 swiper 小程序端采用 wx-swiper web端采用 vant-swiper
 2. 增加rem计算 设计稿一般750px 换算基础1rem = 100px
