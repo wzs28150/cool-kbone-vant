@@ -68,6 +68,7 @@ npm run build:mp
 │  ├─ App.vue                // Web 端入口主视图
 │  └─ main.js                // Web 端入口文件
 └─ index.html                // Web 端入口模板
+```
 
 ## 日志
 
