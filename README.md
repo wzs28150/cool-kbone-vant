@@ -49,13 +49,16 @@ npm run build:mp
 │  ├─ mp                     // 小程序端目标代码目录，使用微信开发者工具打开，用于生产环境
 │  └─ web                    // web 端编译出的文件，用于生产环境
 ├─ src
+│  ├─ api                    // 接口目录
+│  │  ├─ config.js           // axios接口配置文件
+│  │  ├─ home.js             // 首页接口
 │  ├─ common                 // 通用组件
 │  ├─ mp                     // 小程序端入口目录
 │  │  ├─ home                // 小程序端 home 页面
 │  │  │  └─ main.mp.js       // 小程序端入口文件
 │  │  └─ other               // 小程序端 other 页面
 │  │     └─ main.mp.js       // 小程序端入口文件
-│  ├─ pages                  // 页面文件夹
+│  ├─ pages                  // 页面目录
 │  │  ├─ home                // 首页   页面
 │  │  ├─ list                // 分类   页面
 │  │  ├─ cart                // 购物车 页面

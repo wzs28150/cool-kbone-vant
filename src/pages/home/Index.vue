@@ -21,7 +21,7 @@ import Vue from 'vue'
 import Footer from '../../common/Footer.vue'
 import Web from 'reduce-loader!../../common/Web.vue'
 import 'reduce-loader!./web'
-import { getNewsCategory } from '../../api/news'
+import { getNewsCategory } from '../../api/home'
 
 export default Vue.extend({
   name: 'Home',
