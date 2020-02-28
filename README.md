@@ -77,6 +77,7 @@ npm run build:mp
 > 2020.02.28
 1. 完善banner tabbar 调取接口数据
 2. 首页增加搜索条
+3. 首页增加快速导航
 
 > 2020.02.27
 1. 首页增加 swiper 小程序端采用 wx-swiper web端采用 vant-swiper
