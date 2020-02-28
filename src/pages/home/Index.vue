@@ -39,7 +39,9 @@
         <van-row type="flex" justify="space-between">
           <van-col v-for="(item, index) in fast_nav" v-if="index < 4" v-bind:key="index" span="4">
             <a class="fast-item" href="">
-              <wx-image v-if="type == 1" :src="item.icon" lazy-load="true" class="icon" mode="aspectFit"></wx-image>
+              <wx-image v-if="type == 1"
+              :src="item.icon" lazy-load="true"
+              class="icon" mode="aspectFit"></wx-image>
               <van-image check-reduce class="icon" :src="item.icon" lazy-load fit="cover">
                 <template v-slot:loading>
                   <van-loading type="spinner" size="20" />
@@ -52,7 +54,9 @@
         <van-row type="flex" justify="space-between">
           <van-col v-for="(item, index) in fast_nav" v-if="index > 3" v-bind:key="index" span="4">
             <a class="fast-item" href="">
-              <wx-image v-if="type == 1" :src="item.icon" lazy-load="true" class="icon" mode="aspectFit"></wx-image>
+              <wx-image v-if="type == 1"
+              :src="item.icon" lazy-load="true"
+              class="icon" mode="aspectFit"></wx-image>
               <van-image check-reduce class="icon" :src="item.icon" lazy-load fit="cover">
                 <template v-slot:loading>
                   <van-loading type="spinner" size="20" />
