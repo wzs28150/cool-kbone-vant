@@ -72,11 +72,13 @@ npm run build:mp
 
 ## 日志
 
+> 2020.02.28
+1 完善banner tabbar 调取接口数据
+
 > 2020.02.27
 1. 首页增加 swiper 小程序端采用 wx-swiper web端采用 vant-swiper
 2. 增加rem计算 设计稿一般750px 换算基础1rem = 100px
 3. 修改使用scss(个人喜好)
-
 
 > 2020.02.26
 1. 使用vant的tabbar组件构建底部菜单.因为自定义tabbar,所以tabbar页面采用spa,解决跳页菜单重新加载问题
