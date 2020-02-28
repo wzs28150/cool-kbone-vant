@@ -36,7 +36,9 @@ module.exports = {
               preserveWhitespace: false,
             },
           },
-        }],
+        },
+        'exclude-wx-dom-loader',
+      ],
       },
       // ts
       {

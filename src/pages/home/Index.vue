@@ -13,7 +13,7 @@
     <!-- 搜索 -->
     <div class="banner">
       <!-- 小程序banner -->
-      <wx-swiper v-if="type == 1" class="swipe" :indicator-dots="banner.indicatorDots"
+      <wx-swiper check-wx-reduce class="swipe" :indicator-dots="banner.indicatorDots"
         :autoplay="banner.autoplay" :interval="banner.interval" :duration="banner.duration">
         <wx-swiper-item class="swiper-item" v-for="(item, index) in banner.list" v-bind:key="index">
           <wx-image :src="item.img" lazy-load="true" class="pic" mode="aspectFill"></wx-image>
@@ -134,7 +134,9 @@ export default Vue.extend({
 </script>
 
 <style lang="scss">
-
+.wx {
+  display: none;
+}
 .index {
   padding-top: 0.54rem;
   .search {
