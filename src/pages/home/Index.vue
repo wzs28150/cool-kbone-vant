@@ -23,8 +23,13 @@
       <!-- web banner -->
       <van-swipe check-reduce class="swipe" :autoplay="banner.interval"
       :duration="banner.duration">
-        <van-swipe-item class="swiper-item" v-for="(item, index) in banner.list" v-bind:key="index"
-        :style="{backgroundImage: 'url(' + item.img + ')'}">
+        <van-swipe-item class="swiper-item" v-for="(item, index) in banner.list" v-bind:key="index">
+        <!-- <img v-lazy="item.img" /> -->
+        <van-image  width="100%" height="100%" lazy-load :src="item.img" fit="cover">
+          <template v-slot:loading>
+            <van-loading type="spinner" size="20" />
+          </template>
+        </van-image>
         </van-swipe-item>
       </van-swipe>
       <!-- web banner -->
@@ -53,11 +58,12 @@
 <script>
 import Vue from 'vue'
 import Footer from '../../components/common/Footer.vue'
-import { Toast } from 'vant'
+import { Toast, Lazyload } from 'vant'
 import Web from 'reduce-loader!../../components/common/Web.vue'
 import 'reduce-loader!./web'
 import { getIndex } from '../../api/home'
 
+Vue.use(Lazyload)
 export default Vue.extend({
   name: 'Home',
   components: {
@@ -71,7 +77,12 @@ export default Vue.extend({
         showAction: false,
         key: ''
       },
-      banner: {}
+      banner: {},
+      images: [
+        'https://img.yzcdn.cn/vant/apple-1.jpg',
+        'https://img.yzcdn.cn/vant/apple-2.jpg',
+        'https://img.yzcdn.cn/vant/apple-2.jpg'
+      ]
     }
   },
   created() {
@@ -162,6 +173,7 @@ export default Vue.extend({
   }
   .fast-nav {
     background-color: #fff;
+    font-size: 0.14rem;
   }
 }
 
