@@ -37,16 +37,30 @@
     <div class="fast-nav">
       <div class="container">
         <van-row type="flex" justify="space-between">
-          <van-col span="4">产品分类</van-col>
-          <van-col span="4">领券优惠</van-col>
-          <van-col span="4">行业资讯</van-col>
-          <van-col span="4">我要签到</van-col>
+          <van-col v-for="(item, index) in fast_nav" v-if="index < 4" v-bind:key="index" span="4">
+            <a class="fast-item" href="">
+              <wx-image v-if="type == 1" :src="item.icon" lazy-load="true" class="icon" mode="aspectFit"></wx-image>
+              <van-image check-reduce class="icon" :src="item.icon" lazy-load fit="cover">
+                <template v-slot:loading>
+                  <van-loading type="spinner" size="20" />
+                </template>
+              </van-image>
+              <div class="text">{{item.title}}</div>
+            </a>
+          </van-col>
         </van-row>
         <van-row type="flex" justify="space-between">
-          <van-col span="4">产品分类</van-col>
-          <van-col span="4">领券优惠</van-col>
-          <van-col span="4">行业资讯</van-col>
-          <van-col span="4">我要签到</van-col>
+          <van-col v-for="(item, index) in fast_nav" v-if="index > 3" v-bind:key="index" span="4">
+            <a class="fast-item" href="">
+              <wx-image v-if="type == 1" :src="item.icon" lazy-load="true" class="icon" mode="aspectFit"></wx-image>
+              <van-image check-reduce class="icon" :src="item.icon" lazy-load fit="cover">
+                <template v-slot:loading>
+                  <van-loading type="spinner" size="20" />
+                </template>
+              </van-image>
+              <div class="text">{{item.title}}</div>
+            </a>
+          </van-col>
         </van-row>
       </div>
     </div>
@@ -78,11 +92,7 @@ export default Vue.extend({
         key: ''
       },
       banner: {},
-      images: [
-        'https://img.yzcdn.cn/vant/apple-1.jpg',
-        'https://img.yzcdn.cn/vant/apple-2.jpg',
-        'https://img.yzcdn.cn/vant/apple-2.jpg'
-      ]
+      fast_nav: []
     }
   },
   created() {
@@ -90,6 +100,7 @@ export default Vue.extend({
     getIndex
       .then((res) => {
         that.banner = res.data.data.banner
+        that.fast_nav = res.data.data.fast_nav
       })
       .catch(() => {})
     window.addEventListener('wxload', query =>
@@ -173,7 +184,22 @@ export default Vue.extend({
   }
   .fast-nav {
     background-color: #fff;
-    font-size: 0.14rem;
+    font-size: 0.16rem;
+    .fast-item{
+      font-size: 0.14rem;
+      border: none;
+      text-align: center;
+      display: block;
+      line-height: 1em;
+      height: auto;
+      margin-bottom: 1em;
+      .icon {
+        width: 3.5em;
+        height: 3.5em;
+        display: block;
+        margin: 1em auto;
+      }
+    }
   }
 }
 
