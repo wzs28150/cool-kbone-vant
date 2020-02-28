@@ -29,6 +29,22 @@
       </van-swipe>
       <!-- web banner -->
     </div>
+    <div class="fast-nav">
+      <div class="container">
+        <van-row type="flex" justify="space-between">
+          <van-col span="4">产品分类</van-col>
+          <van-col span="4">领券优惠</van-col>
+          <van-col span="4">行业资讯</van-col>
+          <van-col span="4">我要签到</van-col>
+        </van-row>
+        <van-row type="flex" justify="space-between">
+          <van-col span="4">产品分类</van-col>
+          <van-col span="4">领券优惠</van-col>
+          <van-col span="4">行业资讯</van-col>
+          <van-col span="4">我要签到</van-col>
+        </van-row>
+      </div>
+    </div>
     <div class="main" style="height: 1000px"></div>
     <Footer></Footer>
   </div>
@@ -143,6 +159,9 @@ export default Vue.extend({
         }
       }
     }
+  }
+  .fast-nav {
+    background-color: #fff;
   }
 }
 

@@ -17,4 +17,7 @@ export default Vue.extend({
   background-color: #F7F7F7;
   min-height: 100vh;
 }
+.container {
+  margin: 0 0.15rem;
+}
 </style>
