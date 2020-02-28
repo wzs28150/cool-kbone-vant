@@ -1,5 +1,16 @@
 <template>
   <div class="index">
+    <!-- 搜索 -->
+    <form class="search" action="/">
+      <van-search
+        v-model="search.key"
+        :show-action="search.showAction"
+        placeholder="请输入搜索关键词"
+        @search="onSearch"
+        @cancel="onCancel"
+      />
+    </form>
+    <!-- 搜索 -->
     <div class="banner">
       <!-- 小程序banner -->
       <wx-swiper v-if="type == 1" class="swipe" :indicator-dots="banner.indicatorDots"
@@ -18,6 +29,7 @@
       </van-swipe>
       <!-- web banner -->
     </div>
+    <div class="main" style="height: 1000px"></div>
     <Footer></Footer>
   </div>
 </template>
@@ -25,6 +37,7 @@
 <script>
 import Vue from 'vue'
 import Footer from '../../components/common/Footer.vue'
+import { Toast } from 'vant'
 import Web from 'reduce-loader!../../components/common/Web.vue'
 import 'reduce-loader!./web'
 import { getIndex } from '../../api/home'
@@ -38,6 +51,10 @@ export default Vue.extend({
   data() {
     return {
       type: 0,
+      search: {
+        showAction: false,
+        key: ''
+      },
       banner: {}
     }
   },
@@ -64,35 +81,50 @@ export default Vue.extend({
     }
   },
   methods: {
-    changeIndicatorDots() {
-      this.setData({
-        indicatorDots: !this.data.indicatorDots
-      })
+    onSearch(val) {
+      Toast(val)
     },
-
-    changeAutoplay() {
-      this.setData({
-        autoplay: !this.data.autoplay
-      })
-    },
-
-    intervalChange(e) {
-      this.setData({
-        interval: e.detail.value
-      })
-    },
-
-    durationChange(e) {
-      this.setData({
-        duration: e.detail.value
-      })
+    onCancel() {
+      Toast('取消')
     }
   }
 })
 </script>
 
 <style lang="scss">
+
 .index {
+  padding-top: 0.54rem;
+  .search {
+    position: fixed;
+    width: 100%;
+    z-index: 10;
+    top: 0;
+    left: 0;
+    .van-search {
+      padding: 0.1rem 0.12rem;
+      .van-search__content {
+        padding-left: 0.08rem;
+        border-radius: 0.02rem;
+        .van-cell {
+          padding: 0.05rem 0.08rem 0.05rem 0;
+          .van-field__left-icon {
+            line-height : 0.24rem;
+            font-size: 0.16rem;
+            .van-icon{
+              font-size: 0.16rem;
+            }
+          }
+          .van-field__control {
+            height: 0.24rem;
+            min-height: 0.24rem;
+            line-height : 0.24rem;
+            font-size: 0.14rem;
+          }
+        }
+      }
+    }
+  }
   .banner {
     height: 2rem;
     .swipe{

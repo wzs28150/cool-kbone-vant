@@ -77,6 +77,7 @@ npm run build:mp
 > 2020.02.28
 
 1 完善banner tabbar 调取接口数据
+2 首页增加搜索条
 
 > 2020.02.27
 
