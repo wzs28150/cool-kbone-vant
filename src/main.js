@@ -11,9 +11,15 @@ import 'vant/lib/index.css'
 Vue.config.productionTip = false
 Vue.use(Vant)
 sync(store, router)
-window.onload = function onload() {
+function changeFontSize() {
   const fonts = 100 * (document.documentElement.clientWidth / 375)
   document.documentElement.style.fontSize = `${fonts}px`
+}
+window.onload = function onload() {
+  changeFontSize()
+}
+window.onresize = function onresize() {
+  changeFontSize()
 }
 new Vue({
   el: '#app',

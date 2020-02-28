@@ -1,6 +1,6 @@
 import instance from './config'
 // 获取系统信息
-export const getNewsCategory = instance.get('/api/news/category')
+export const getIndex = instance.get('/api/index')
 export const getNewsList = ({
   catid,
   page

@@ -14,5 +14,7 @@ export default Vue.extend({
 <style lang="scss">
 #app, page {
   font-size: 0.16rem!important;
+  background-color: #F7F7F7;
+  min-height: 100vh;
 }
 </style>

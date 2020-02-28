@@ -1,27 +1,33 @@
 <template>
   <div class="index">
-    <wx-swiper v-if="type == 1" :indicator-dots="indicatorDots"
-        :autoplay="autoplay" :interval="interval" :duration="duration">
-      <wx-swiper-item class="swiper-item" v-for="(item, index) in background" v-bind:key="index">
-        {{index}}
-      </wx-swiper-item>
-    </wx-swiper>
-    <van-swipe  check-reduce class="my-swipe" :autoplay="3000" indicator-color="white">
-      <van-swipe-item class="swiper-item">1</van-swipe-item>
-      <van-swipe-item class="swiper-item">2</van-swipe-item>
-      <van-swipe-item class="swiper-item">3</van-swipe-item>
-      <van-swipe-item class="swiper-item">4</van-swipe-item>
-    </van-swipe>
+    <div class="banner">
+      <!-- 小程序banner -->
+      <wx-swiper v-if="type == 1" class="swipe" :indicator-dots="banner.indicatorDots"
+        :autoplay="banner.autoplay" :interval="banner.interval" :duration="banner.duration">
+        <wx-swiper-item class="swiper-item" v-for="(item, index) in banner.list" v-bind:key="index">
+          <wx-image :src="item.img" lazy-load="true" class="pic" mode="aspectFill"></wx-image>
+        </wx-swiper-item>
+      </wx-swiper>
+      <!-- 小程序banner -->
+      <!-- web banner -->
+      <van-swipe check-reduce class="swipe" :autoplay="banner.interval"
+      :duration="banner.duration">
+        <van-swipe-item class="swiper-item" v-for="(item, index) in banner.list" v-bind:key="index"
+        :style="{backgroundImage: 'url(' + item.img + ')'}">
+        </van-swipe-item>
+      </van-swipe>
+      <!-- web banner -->
+    </div>
     <Footer></Footer>
   </div>
 </template>
 
 <script>
 import Vue from 'vue'
-import Footer from '../../common/Footer.vue'
-import Web from 'reduce-loader!../../common/Web.vue'
+import Footer from '../../components/common/Footer.vue'
+import Web from 'reduce-loader!../../components/common/Web.vue'
 import 'reduce-loader!./web'
-import { getNewsCategory } from '../../api/home'
+import { getIndex } from '../../api/home'
 
 export default Vue.extend({
   name: 'Home',
@@ -32,18 +38,14 @@ export default Vue.extend({
   data() {
     return {
       type: 0,
-      background: ['demo-text-1', 'demo-text-2', 'demo-text-3'],
-      indicatorDots: true,
-      vertical: false,
-      autoplay: true,
-      interval: 2000,
-      duration: 500
+      banner: {}
     }
   },
   created() {
-    getNewsCategory
+    const that = this
+    getIndex
       .then((res) => {
-        console.log(res.data.data)
+        that.banner = res.data.data.banner
       })
       .catch(() => {})
     window.addEventListener('wxload', query =>
@@ -90,25 +92,26 @@ export default Vue.extend({
 </script>
 
 <style lang="scss">
-.cnt {
-  margin-top: 20px;
-}
-.swiper-item {
-  color: #fff;
-  font-size: 20px;
-  line-height: 150px;
-  text-align: center;
-  background-color: #39a9ed;
-}
-a,
-button {
-  display: block;
-  width: 100%;
-  height: 30px;
-  line-height: 30px;
-  text-align: center;
-  font-size: 20px;
-  border: 1px solid #ddd;
+.index {
+  .banner {
+    height: 2rem;
+    .swipe{
+      height: 100%;
+      .swiper-item {
+        color: #fff;
+        font-size: 20px;
+        height: 100%;
+        text-align: center;
+        background-color: #F7F7F7;
+        background-size: cover;
+        background-position: center;
+        .pic{
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+  }
 }
 
 .miniprogram-root {

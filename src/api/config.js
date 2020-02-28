@@ -9,7 +9,7 @@ Axios.defaults.headers['Content-Type'] = 'application/json'
 Axios.defaults.headers.type = 'pc'
 const instance = Axios.create({
   baseURL: process.env.NODE_ENV === 'production' ?
-    'http://114.115.177.23:9090/mock/93/' :
-    'http://114.115.177.23:9090/mock/93/'
+    'http://114.115.177.23:9090/mock/106/api' :
+    'http://114.115.177.23:9090/mock/106/api'
 })
 export default instance

@@ -7,8 +7,8 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import Header from '../../common/Header.vue'
-import Footer from '../../common/Footer.vue'
+import Header from '../../components/common/Header.vue'
+import Footer from '../../components/common/Footer.vue'
 
 export default Vue.extend({
   name: 'Cart',

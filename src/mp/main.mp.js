@@ -51,13 +51,18 @@ export default function createApp() {
   const container = document.createElement('div')
   container.id = 'app'
   document.body.appendChild(container)
-  window.onload = function onload() {
+  function changeFontSize() {
     if (process.env.isMiniprogram) {
       const fonts = 100 * (wx.getSystemInfoSync().screenWidth / 375)
       document.documentElement.style.fontSize = `${fonts}px`
     }
   }
-
+  window.onload = function onload() {
+    changeFontSize()
+  }
+  window.onresize = function onresize() {
+    changeFontSize()
+  }
   Vue.config.productionTip = false
 
   sync(store, router)
