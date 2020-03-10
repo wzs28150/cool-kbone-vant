@@ -20,4 +20,7 @@ export default Vue.extend({
 .container {
   margin: 0 0.15rem;
 }
+textarea {
+  background-color: #fff;
+}
 </style>

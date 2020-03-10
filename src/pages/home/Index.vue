@@ -68,7 +68,13 @@
         </van-row>
       </div>
     </div>
-    <div class="main" style="height: 1000px"></div>
+    <van-list class="home-list"
+    v-model="loading"
+    :finished="finished"
+    finished-text="没有更多了"
+    @load="onLoad">
+      <van-cell v-for="item in list" :key="item" :title="item" />
+    </van-list>
     <Footer></Footer>
   </div>
 </template>
@@ -76,12 +82,13 @@
 <script>
 import Vue from 'vue'
 import Footer from '../../components/common/Footer.vue'
-import { Toast, Lazyload } from 'vant'
+import { Toast, Lazyload, List } from 'vant'
 import Web from 'reduce-loader!../../components/common/Web.vue'
 import 'reduce-loader!./web'
 import { getIndex } from '../../api/home'
 
 Vue.use(Lazyload)
+Vue.use(List)
 export default Vue.extend({
   name: 'Home',
   components: {
@@ -96,7 +103,10 @@ export default Vue.extend({
         key: ''
       },
       banner: {},
-      fast_nav: []
+      fast_nav: [],
+      list: [],
+      loading: false,
+      finished: false
     }
   },
   created() {
@@ -128,6 +138,23 @@ export default Vue.extend({
     },
     onCancel() {
       Toast('取消')
+    },
+    onLoad() {
+      // 异步更新数据
+      // setTimeout 仅做示例，真实场景中一般为 ajax 请求
+      setTimeout(() => {
+        for (let i = 0; i < 10; i += 1) {
+          this.list.push(this.list.length + 1)
+        }
+
+        // 加载状态结束
+        this.loading = false
+
+        // 数据全部加载完成
+        if (this.list.length >= 40) {
+          this.finished = true
+        }
+      }, 1000)
     }
   }
 })
@@ -138,7 +165,7 @@ export default Vue.extend({
   display: none;
 }
 .index {
-  padding-top: 0.54rem;
+  padding: 0.54rem 0 0.6rem;
   .search {
     position: fixed;
     width: 100%;
@@ -208,7 +235,9 @@ export default Vue.extend({
     }
   }
 }
-
+.home-list {
+  margin-top: 0.15rem;
+}
 .miniprogram-root {
   .for-web {
     display: none;
